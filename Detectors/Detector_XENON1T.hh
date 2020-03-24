@@ -39,7 +39,7 @@ class Detector_Xe1t : public VDetector {
     // Ionization and Secondary Scintillation (S2) parameters
     g1_gas = 0.0823;  // phd per S2 photon in gas, used to get SE size (set to match SE size of 28.2 PE/SE = 23.13 phd/SE from 1906.04717)
     s2Fano = 3.65;  // Fano-like fudge factor for SE width (set to match SE width of 7.2 PE = 5.9 phd from 1906.04717)
-    s2_thr = 90.;  // the S2 threshold in phe or PE, *not* phd. Affects NR most
+    s2_thr = 20.;  // the S2 threshold in phe or PE, *not* phd. Affects NR most
     E_gas = 11.045;    // field in kV/cm between liquid/gas border and anode (set to match ext_eff)
     eLife_us = 641.;  // the drift electron mean lifetime in micro-seconds 1906.04717
 
