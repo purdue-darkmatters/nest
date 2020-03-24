@@ -17,6 +17,7 @@
 #include "testNEST.hh"
 
 #include "DetectorExample_XENON10.hh"
+#include "Detector_XENON1T.hh"
 
 using namespace std;
 using namespace NEST;
@@ -27,10 +28,12 @@ double energies[3];
 int main(int argc, char** argv) {
   // Instantiate your own VDetector class here, then load into NEST class
   // constructor
-  DetectorExample_XENON10* detector = new DetectorExample_XENON10();
+  // DetectorExample_XENON10* detector = new DetectorExample_XENON10();
 
   // Custom parameter modification functions
   // detector->ExampleFunction();
+
+  Detector_Xe1t* detector = new Detector_Xe1t();
 
   if (argc < 7) {
     cout << "This program takes 6 (or 7) inputs, with Z position in mm from "
@@ -401,7 +404,7 @@ int testNEST(VDetector* detector, unsigned long int numEvts, string type,
         else
           fprintf(stdout,
                   "E [keV]\t\tfield [V/cm]\ttDrift [us]\tX,Y,Z "
-                  "[mm]\tNph\tNe-\tS1 [PE or phe]\tS1_3Dcor "
+                  "[mm]\tNph\tNe-\tNhits\t\tS1 [PE or phe]\tS1_3Dcor "
                   "[phd]\tspikeC(NON-INT)\tNe-Extr\tS2_rawArea [PE]\tS2_3Dcorr "
                   "[phd]\n");
       }
@@ -693,7 +696,7 @@ int testNEST(VDetector* detector, unsigned long int numEvts, string type,
         printf("%e\t%e\t%e\t", scint[2], scint[5], scint[7]);
         printf("%li\t%e\t%e\n", (long)scint2[0], scint2[4], scint2[7]);
       } else {
-        printf("%.6f\t%.6f\t%.6f\t", scint[2], scint[5],
+        printf("%.6f\t%.6f\t%.6f\t%.6f\t", scint[0], scint[2], scint[5],
                scint[7]);  // see GetS1 inside of NEST.cpp for full explanation
         // of all 8 scint return vector elements. Sample 3
         // most common
